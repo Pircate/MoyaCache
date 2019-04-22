@@ -43,6 +43,6 @@ extension StoryAPI: TargetType {
 extension StoryAPI: Cacheable {
     
     var expiry: Expiry {
-        return .never
+        return .seconds(10)
     }
 }
