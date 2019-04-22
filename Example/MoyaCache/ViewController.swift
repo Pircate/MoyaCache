@@ -39,34 +39,7 @@ extension Storable where Self: TargetType {
     }
 }
 
-enum StoryAPI: TargetType, Cacheable {
-    
-    var baseURL: URL {
-        return URL(string: "https://news-at.zhihu.com/api")!
-    }
-    
-    var path: String {
-        return "4/news/latest"
-    }
-    
-    var method: Moya.Method {
-        return .get
-    }
-    
-    var sampleData: Data {
-        return "".data(using: .utf8)!
-    }
-    
-    var task: Task {
-        return .requestPlain
-    }
-    
-    var headers: [String : String]? {
-        return nil
-    }
-    
-    case latest
-}
+
 
 struct StoryListModel: Codable {
     let topStories: [StoryItemModel]
@@ -88,8 +61,22 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let provider = MoyaProvider<StoryAPI>()
-        provider.cache.request(.latest) { result in
-            
+        let target = StoryAPI.latest
+        
+        do {
+            let cachedResponse = try target.cachedResponse()
+            debugPrint(try cachedResponse.map(StoryItemModel.self).title)
+        } catch {
+            debugPrint(error)
+        }
+        
+        provider.cache.request(target) { result in
+            switch result {
+            case .success(let response):
+                debugPrint(try! response.map(StoryItemModel.self).title)
+            case .failure(let error):
+                debugPrint(error)
+            }
         }
     }
 

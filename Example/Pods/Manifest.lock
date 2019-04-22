@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.8.2)
+  - CleanJSON (0.8.2)
   - Moya (13.0.0):
     - Moya/Core (= 13.0.0)
   - Moya/Core (13.0.0):
@@ -10,11 +11,13 @@ PODS:
   - Result (4.1.0)
 
 DEPENDENCIES:
+  - CleanJSON
   - MoyaCache (from `../`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - CleanJSON
     - Moya
     - Result
 
@@ -24,10 +27,11 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  CleanJSON: f7be273cc133747dfc638da4f2f9d552d05a4289
   Moya: 161263550064ff8a4948e8ff63137fd72a876292
   MoyaCache: fc7bb363ae3ed6f1c5fb53a18c9b6c190583e361
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
 
-PODFILE CHECKSUM: 2e59db88ef73d18e23e5149b82c85e7ee1b4b1aa
+PODFILE CHECKSUM: ee0905a1987548861c73ddecaa9d8be460143ce2
 
 COCOAPODS: 1.7.0.beta.3
