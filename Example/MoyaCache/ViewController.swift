@@ -37,6 +37,8 @@ class ViewController: UIViewController {
             let cachedResponse = try target.cachedResponse()
             let object = try cachedResponse.mapObject(StoryListModel.self)
             debugPrint("从缓存读取:", object.topStories.first!.title)
+        } catch let MoyaCacheError.expired(key) {
+            debugPrint(key, key.stringValue)
         } catch {
             debugPrint(error)
         }

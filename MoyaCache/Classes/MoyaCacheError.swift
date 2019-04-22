@@ -7,5 +7,5 @@
 //
 
 public enum MoyaCacheError: Error {
-    case expired
+    case expired(CachingKey)
 }
