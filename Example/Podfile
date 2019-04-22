@@ -2,6 +2,7 @@ use_frameworks!
 
 target 'MoyaCache_Example' do
   pod 'MoyaCache', :path => '../'
+  pod 'Cache'
   pod 'CleanJSON'
 
   target 'MoyaCache_Tests' do

@@ -9,37 +9,7 @@
 import UIKit
 import Moya
 import MoyaCache
-
-extension Storable where Self: TargetType {
-    
-    var expiry: Expiry {
-        return .never
-    }
-    
-    public var allowsStorage: (Response) -> Bool {
-        return { _ in
-            return true
-        }
-    }
-    
-    public func cachedResponse(for key: CachingKey) throws -> Response {
-        return Response(statusCode: 0, data: "".data(using: .utf8)!)
-    }
-    
-    public func storeCachedResponse(_ cachedResponse: Response, for key: CachingKey) throws {
-//        try Storage<Moya.Response>().setObject(cachedResponse, forKey: key.stringValue)
-    }
-    
-    public func removeCachedResponse(for key: CachingKey) throws {
-//        try Storage<Moya.Response>().removeObject(forKey: key.stringValue)
-    }
-    
-    public func removeAllCachedResponses() throws {
-//        try Storage<Moya.Response>().removeAll()
-    }
-}
-
-
+import CleanJSON
 
 struct StoryListModel: Codable {
     let topStories: [StoryItemModel]
@@ -65,7 +35,8 @@ class ViewController: UIViewController {
         
         do {
             let cachedResponse = try target.cachedResponse()
-            debugPrint(try cachedResponse.map(StoryItemModel.self).title)
+            let object = try cachedResponse.mapObject(StoryListModel.self)
+            debugPrint("从缓存读取:", object.topStories.first!.title)
         } catch {
             debugPrint(error)
         }
@@ -73,17 +44,23 @@ class ViewController: UIViewController {
         provider.cache.request(target) { result in
             switch result {
             case .success(let response):
-                debugPrint(try! response.map(StoryItemModel.self).title)
+                let object = try! response.mapObject(StoryListModel.self)
+                debugPrint("从云端读取:", object.topStories.first!.title)
             case .failure(let error):
                 debugPrint(error)
             }
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }
 
+private extension Response {
+    
+    func mapObject<T: Decodable>(
+        _ type: T.Type,
+        atKeyPath keyPath: String? = nil,
+        using decoder: JSONDecoder = CleanJSONDecoder()
+        ) throws -> T
+    {
+        return try map(type, atKeyPath: keyPath, using: decoder, failsOnEmptyData: true)
+    }
+}

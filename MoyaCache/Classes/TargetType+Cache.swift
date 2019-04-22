@@ -15,7 +15,7 @@ public extension TargetType where Self: Cacheable {
             return try cachedResponse(for: self)
         }
         
-        throw MoyaCacheError.expire
+        throw MoyaCacheError.expired
     }
     
     func storeCachedResponse(_ cachedResponse: Moya.Response) throws {

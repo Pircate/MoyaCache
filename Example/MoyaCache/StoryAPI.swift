@@ -9,7 +9,11 @@
 import Moya
 import MoyaCache
 
-enum StoryAPI: TargetType, Cacheable {
+enum StoryAPI {
+    case latest
+}
+
+extension StoryAPI: TargetType {
     
     var baseURL: URL {
         return URL(string: "https://news-at.zhihu.com/api")!
@@ -34,6 +38,11 @@ enum StoryAPI: TargetType, Cacheable {
     var headers: [String : String]? {
         return nil
     }
+}
+
+extension StoryAPI: Cacheable {
     
-    case latest
+    var expiry: Expiry {
+        return .never
+    }
 }
