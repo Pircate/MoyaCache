@@ -36,18 +36,27 @@ class ViewController: UIViewController {
         do {
             let cachedResponse = try target.cachedResponse()
             let object = try cachedResponse.mapObject(StoryListModel.self)
-            debugPrint("从缓存读取:", object.topStories.first!.title)
-        } catch let MoyaCacheError.expired(key) {
-            debugPrint(key, key.stringValue)
+            
+            debugPrint("******************************************")
+            debugPrint("缓存读取成功:", object.topStories.first!.title)
+            debugPrint("******************************************")
+        } catch let MoyaCacheError.expired(expired) {
+            debugPrint("******************************************")
+            debugPrint("缓存已过期:", expired.date)
+            debugPrint("******************************************")
         } catch {
+            debugPrint("******************************************")
             debugPrint(error)
+            debugPrint("******************************************")
         }
         
         provider.cache.request(target) { result in
             switch result {
             case .success(let response):
                 let object = try! response.mapObject(StoryListModel.self)
-                debugPrint("从云端读取:", object.topStories.first!.title)
+                
+                debugPrint("云端拉取成功:", object.topStories.first!.title)
+                debugPrint("******************************************")
             case .failure(let error):
                 debugPrint(error)
             }

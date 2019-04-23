@@ -1,8 +1,8 @@
 // 
 //  CachingKey.swift
-//  RxNetwork
+//  MoyaCache
 //
-//  Created by Pircate(gao497868860@gmail.com) on 2019/3/6
+//  Created by Pircate(swifter.dev@gmail.com) on 2019/4/22
 //  Copyright © 2019年 Pircate. All rights reserved.
 //
 

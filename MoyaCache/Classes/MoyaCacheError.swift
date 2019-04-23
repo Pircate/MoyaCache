@@ -7,5 +7,10 @@
 //
 
 public enum MoyaCacheError: Error {
-    case expired(CachingKey)
+    case noCache
+    case expired(Expired)
+}
+
+public struct Expired {
+    public let date: Date
 }

@@ -1,9 +1,9 @@
 //
 //  CacheProvider.swift
-//  RxMoyaCache
+//  MoyaCache
 //
-//  Created by Pircate on 2018/6/14.
-//  Copyright © 2018年 Pircate. All rights reserved.
+//  Created by Pircate(swifter.dev@gmail.com) on 2019/4/22
+//  Copyright © 2019年 Pircate. All rights reserved.
 //
 
 import Moya

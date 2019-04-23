@@ -1,18 +1,16 @@
 // 
 //  Cacheable.swift
-//  RxNetwork
+//  MoyaCache
 //
-//  Created by Pircate(gao497868860@gmail.com) on 2019/3/5
+//  Created by Pircate(swifter.dev@gmail.com) on 2019/4/22
 //  Copyright © 2019年 Pircate. All rights reserved.
 //
 
 import Moya
 
-public typealias Cacheable = Storable & CachingKey
+public typealias Cacheable = Storable & Expirable & CachingKey
 
 public protocol Storable {
-    
-    var expiry: Expiry { get }
     
     var allowsStorage: (Moya.Response) -> Bool { get }
     

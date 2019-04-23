@@ -1,7 +1,7 @@
 {
   "name": "MoyaCache",
   "version": "0.1.0",
-  "summary": "A short description of MoyaCache.",
+  "summary": "A cache protocol for Moya.",
   "homepage": "https://github.com/Pircate/MoyaCache",
   "license": {
     "type": "MIT",
