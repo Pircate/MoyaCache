@@ -28,5 +28,7 @@ public extension TargetType where Self: Cacheable {
     
     func removeCachedResponse() throws {
         try removeCachedResponse(for: self)
+        
+        removeExpiry(for: self)
     }
 }

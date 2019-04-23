@@ -14,6 +14,8 @@ public protocol Expirable {
     
     func update(expiry: Expiry, for key: CachingKey)
     
+    func removeExpiry(for key: CachingKey)
+    
     func expiry(for key: CachingKey) throws -> Expiry
 }
 
@@ -21,6 +23,10 @@ public extension Expirable where Self: TargetType {
     
     func update(expiry: Expiry, for key: CachingKey) {
         UserDefaults.standard.update(expiry: expiry.date, for: key.stringValue)
+    }
+    
+    func removeExpiry(for key: CachingKey) {
+        UserDefaults.standard.removeExpiryDate(for: key.stringValue)
     }
     
     func expiry(for key: CachingKey) throws -> Expiry {
@@ -49,6 +55,15 @@ private extension UserDefaults {
         }
         
         object.updateValue(date, forKey: key)
+        set(object, forKey: UserDefaults.expiryKey)
+    }
+    
+    func removeExpiryDate(for key: String) {
+        guard var object = object(forKey: UserDefaults.expiryKey) as? [String: Date] else {
+            return
+        }
+        
+        object.removeValue(forKey: key)
         set(object, forKey: UserDefaults.expiryKey)
     }
 }
