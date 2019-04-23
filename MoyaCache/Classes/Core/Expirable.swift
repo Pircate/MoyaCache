@@ -6,8 +6,6 @@
 //  Copyright © 2019年 Pircate. All rights reserved.
 //
 
-import Moya
-
 public protocol Expirable {
     
     var expiry: Expiry { get }
@@ -19,7 +17,7 @@ public protocol Expirable {
     func expiry(for key: CachingKey) throws -> Expiry
 }
 
-public extension Expirable where Self: TargetType {
+public extension Expirable {
     
     func update(expiry: Expiry, for key: CachingKey) {
         UserDefaults.standard.update(expiry: expiry.date, for: key.stringValue)
@@ -31,7 +29,7 @@ public extension Expirable where Self: TargetType {
     
     func expiry(for key: CachingKey) throws -> Expiry {
         guard let date = UserDefaults.standard.expiryDate(for: key.stringValue) else {
-            throw MoyaCacheError.noCache
+            throw Error.noCache
         }
         
         return .date(date)

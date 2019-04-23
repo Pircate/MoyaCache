@@ -40,7 +40,7 @@ class ViewController: UIViewController {
             debugPrint("******************************************")
             debugPrint("缓存读取成功:", object.topStories.first!.title)
             debugPrint("******************************************")
-        } catch let MoyaCacheError.expired(expired) {
+        } catch let MoyaCache.Error.expired(expired) {
             debugPrint("******************************************")
             debugPrint("缓存已过期:", expired.date)
             debugPrint("******************************************")
