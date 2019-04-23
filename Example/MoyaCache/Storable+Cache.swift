@@ -10,7 +10,7 @@ import Cache
 import Moya
 import MoyaCache
 
-extension Storable where Self: TargetType {
+extension Storable {
     
     typealias CachedResponse = Moya.Response
     

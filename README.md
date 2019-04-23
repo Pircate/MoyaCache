@@ -28,17 +28,19 @@ pod 'MoyaCache'
 * 实现缓存协议
 
 ```swift
-extension Storable where Self: TargetType {
+extension Storable {
     
-    public var allowsStorage: (Response) -> Bool {
+    typealias CachedResponse = Moya.Response
+    
+    public var allowsStorage: (Moya.Response) -> Bool {
         return { $0.statusCode == 200 }
     }
     
-    public func cachedResponse(for key: CachingKey) throws -> Response {
+    public func cachedResponse(for key: CachingKey) throws -> Moya.Response {
         return try Storage<Moya.Response>().object(forKey: key.stringValue)
     }
     
-    public func storeCachedResponse(_ cachedResponse: Response, for key: CachingKey) throws {
+    public func storeCachedResponse(_ cachedResponse: Moya.Response, for key: CachingKey) throws {
         try Storage<Moya.Response>().setObject(cachedResponse, forKey: key.stringValue)
     }
     

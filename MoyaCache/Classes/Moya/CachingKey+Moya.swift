@@ -8,8 +8,8 @@
 
 import Moya
 
-extension CachingKey where Self: TargetType {
-    public var stringValue: String {
+public extension CachingKey where Self: TargetType {
+    var stringValue: String {
         return cachedKey
     }
 }
