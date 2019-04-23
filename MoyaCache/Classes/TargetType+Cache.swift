@@ -10,7 +10,7 @@ import Moya
 
 public extension TargetType where Self: Cacheable {
     
-    func cachedResponse() throws -> Moya.Response {
+    func cachedResponse() throws -> CachedResponse {
         let expiry = try self.expiry(for: self)
         
         guard expiry.isExpired else {
@@ -20,7 +20,7 @@ public extension TargetType where Self: Cacheable {
         throw MoyaCacheError.expired(Expired(date: expiry.date))
     }
     
-    func storeCachedResponse(_ cachedResponse: Moya.Response) throws {
+    func storeCachedResponse(_ cachedResponse: CachedResponse) throws {
         try storeCachedResponse(cachedResponse, for: self)
         
         update(expiry: expiry, for: self)

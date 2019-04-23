@@ -6,17 +6,17 @@
 //  Copyright © 2019年 Pircate. All rights reserved.
 //
 
-import Moya
-
 public typealias Cacheable = Storable & Expirable & CachingKey
 
 public protocol Storable {
     
-    var allowsStorage: (Moya.Response) -> Bool { get }
+    associatedtype CachedResponse
     
-    func cachedResponse(for key: CachingKey) throws -> Moya.Response
+    var allowsStorage: (CachedResponse) -> Bool { get }
     
-    func storeCachedResponse(_ cachedResponse: Moya.Response, for key: CachingKey) throws
+    func cachedResponse(for key: CachingKey) throws -> CachedResponse
+    
+    func storeCachedResponse(_ cachedResponse: CachedResponse, for key: CachingKey) throws
     
     func removeCachedResponse(for key: CachingKey) throws
     

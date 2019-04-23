@@ -8,7 +8,7 @@
 
 import Moya
 
-public struct CacheProvider<Provider: MoyaProviderType> where Provider.Target: Cacheable {
+public struct CacheProvider<Provider: MoyaProviderType> where Provider.Target: Cacheable, Provider.Target.CachedResponse == Moya.Response {
     
     private let provider: Provider
     

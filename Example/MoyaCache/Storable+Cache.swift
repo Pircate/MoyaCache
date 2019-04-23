@@ -12,6 +12,8 @@ import MoyaCache
 
 extension Storable where Self: TargetType {
     
+    typealias CachedResponse = Moya.Response
+    
     public var allowsStorage: (Response) -> Bool {
         return { $0.statusCode == 200 }
     }

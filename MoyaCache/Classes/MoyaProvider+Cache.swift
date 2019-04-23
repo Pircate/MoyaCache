@@ -8,7 +8,7 @@
 
 import Moya
 
-public extension MoyaProvider where Target: Cacheable {
+public extension MoyaProvider where Target: Cacheable, Target.CachedResponse == Moya.Response {
     
     var cache: CacheProvider<MoyaProvider> {
         return CacheProvider(self)
