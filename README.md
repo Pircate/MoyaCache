@@ -4,6 +4,7 @@
 [![Version](https://img.shields.io/cocoapods/v/MoyaCache.svg?style=flat)](https://cocoapods.org/pods/MoyaCache)
 [![License](https://img.shields.io/cocoapods/l/MoyaCache.svg?style=flat)](https://cocoapods.org/pods/MoyaCache)
 [![Platform](https://img.shields.io/cocoapods/p/MoyaCache.svg?style=flat)](https://cocoapods.org/pods/MoyaCache)
+[![codebeat badge](https://codebeat.co/badges/2a844bc6-5a32-4f9c-9585-f34aae5ab6c3)](https://codebeat.co/projects/github-com-pircate-moyacache-master)
 
 ## Example
 
