@@ -7,15 +7,16 @@
 //
 
 import Moya
+import Storable
 
-public extension MoyaProvider where Target: Cacheable, Target.CachedResponse == Moya.Response {
+public extension MoyaProvider where Target: Cacheable, Target.ResponseType == Moya.Response {
     
     var cache: CacheProvider<MoyaProvider> {
         return CacheProvider(self)
     }
 }
 
-public struct CacheProvider<Provider: MoyaProviderType> where Provider.Target: Cacheable, Provider.Target.CachedResponse == Moya.Response {
+public struct CacheProvider<Provider: MoyaProviderType> where Provider.Target: Cacheable, Provider.Target.ResponseType == Moya.Response {
     
     private let provider: Provider
     

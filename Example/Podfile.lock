@@ -7,9 +7,11 @@ PODS:
   - Moya/Core (13.0.0):
     - Alamofire (~> 4.1)
     - Result (~> 4.1)
-  - MoyaCache (0.2.0):
+  - MoyaCache (0.2.1):
     - Moya
+    - Storable
   - Result (4.1.0)
+  - Storable (0.1.0)
 
 DEPENDENCIES:
   - Cache
@@ -23,6 +25,7 @@ SPEC REPOS:
     - CleanJSON
     - Moya
     - Result
+    - Storable
 
 EXTERNAL SOURCES:
   MoyaCache:
@@ -33,8 +36,9 @@ SPEC CHECKSUMS:
   Cache: 807c5d86d01a177f06ede9865add3aea269bbfd4
   CleanJSON: f7be273cc133747dfc638da4f2f9d552d05a4289
   Moya: 161263550064ff8a4948e8ff63137fd72a876292
-  MoyaCache: ea509127660c2f60fcdea46008dd41d8f030feff
+  MoyaCache: 1a7d280ab17dbc6e12d9ac10e32735cd8751490a
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  Storable: e880d65b5ab57283115983bdb9d3d068e5bcb724
 
 PODFILE CHECKSUM: 4d5b066590e307e4423353d591ce993e8bce1a10
 

@@ -8,6 +8,7 @@
 
 import Moya
 import MoyaCache
+import Storable
 
 enum StoryAPI {
     case latest

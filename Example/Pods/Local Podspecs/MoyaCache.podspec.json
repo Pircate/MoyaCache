@@ -1,6 +1,6 @@
 {
   "name": "MoyaCache",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "summary": "A cache protocol for Moya.",
   "homepage": "https://github.com/Pircate/MoyaCache",
   "license": {
@@ -12,17 +12,20 @@
   },
   "source": {
     "git": "https://github.com/Pircate/MoyaCache.git",
-    "tag": "0.2.0"
+    "tag": "0.2.1"
   },
   "platforms": {
-    "ios": "9.0"
+    "ios": "10.0"
   },
-  "swift_versions": "4.2",
+  "swift_versions": "5.0",
   "source_files": "MoyaCache/Classes/**/*",
   "dependencies": {
     "Moya": [
 
+    ],
+    "Storable": [
+
     ]
   },
-  "swift_version": "4.2"
+  "swift_version": "5.0"
 }

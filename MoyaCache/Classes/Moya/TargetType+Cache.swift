@@ -7,20 +7,23 @@
 //
 
 import Moya
+import Storable
 
-public extension TargetType where Self: Cacheable {
+public typealias Cacheable = Storable & Expirable & CachingKey
+
+public extension TargetType where Self: Cacheable, Self.ResponseType == Moya.Response {
     
-    func cachedResponse() throws -> CachedResponse {
+    func cachedResponse() throws -> Moya.Response {
         let expiry = try self.expiry(for: self)
         
         guard expiry.isExpired else {
             return try cachedResponse(for: self)
         }
         
-        throw Expiry.Error.expired(Expiry.Expired(date: expiry.date))
+        throw Expiry.Error.expired(expiry.date)
     }
     
-    func storeCachedResponse(_ cachedResponse: CachedResponse) throws {
+    func storeCachedResponse(_ cachedResponse: Moya.Response) throws {
         try storeCachedResponse(cachedResponse, for: self)
         
         update(expiry: expiry, for: self)

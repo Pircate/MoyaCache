@@ -10,6 +10,7 @@ import UIKit
 import Moya
 import MoyaCache
 import CleanJSON
+import Storable
 
 struct StoryListModel: Codable {
     let topStories: [StoryItemModel]
@@ -40,9 +41,9 @@ class ViewController: UIViewController {
             debugPrint("******************************************")
             debugPrint("缓存读取成功:", object.topStories.first!.title)
             debugPrint("******************************************")
-        } catch let Expiry.Error.expired(expired) {
+        } catch let Expiry.Error.expired(date) {
             debugPrint("******************************************")
-            debugPrint("缓存已过期:", expired.date)
+            debugPrint("缓存已过期:", date)
             debugPrint("******************************************")
         } catch {
             debugPrint("******************************************")

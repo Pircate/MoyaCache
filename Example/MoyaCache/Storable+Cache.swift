@@ -9,6 +9,7 @@
 import Cache
 import Moya
 import MoyaCache
+import Storable
 
 extension Storable {
     
