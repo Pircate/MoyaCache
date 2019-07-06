@@ -9,6 +9,8 @@
 import Moya
 import Storable
 
+public typealias CachingKey = StoringKey
+
 public typealias Cacheable = Storable & Expirable & CachingKey
 
 public extension TargetType where Self: Cacheable, Self.ResponseType == Moya.Response {

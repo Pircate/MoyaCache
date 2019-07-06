@@ -1,5 +1,7 @@
 use_frameworks!
 
+install! 'cocoapods', :disable_input_output_paths => true
+
 target 'MoyaCache_Example' do
   pod 'MoyaCache', :path => '../'
   pod 'Cache'
