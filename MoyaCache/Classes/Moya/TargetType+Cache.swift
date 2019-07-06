@@ -17,7 +17,7 @@ public extension TargetType where Self: Cacheable {
             return try cachedResponse(for: self)
         }
         
-        throw Error.expired(Expired(date: expiry.date))
+        throw Expiry.Error.expired(Expiry.Expired(date: expiry.date))
     }
     
     func storeCachedResponse(_ cachedResponse: CachedResponse) throws {
