@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MoyaCache'
-  s.version          = '0.2.1'
+  s.version          = '0.3.0'
   s.summary          = 'A cache protocol for Moya.'
   s.homepage         = 'https://github.com/Pircate/MoyaCache'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
